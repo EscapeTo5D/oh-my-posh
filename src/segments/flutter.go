@@ -15,7 +15,10 @@ func (f *Flutter) Enabled() bool {
 		"fvm": {
 			executable: "fvm",
 			args:       []string{"flutter", "--version"},
-			regex:      `Flutter (?P<version>((?P<major>[0-9]+).(?P<minor>[0-9]+).(?P<patch>[0-9]+)))`,
+			regex:      `(?P<version>((?P<major>[0-9]+).(?P<minor>[0-9]+).(?P<patch>[0-9]+)))`,
+			getVersion: func() (string, error) {
+				return f.env.FileContent(".fvmrc"), nil
+			},
 		},
 		"flutter": {
 			executable: "flutter",
