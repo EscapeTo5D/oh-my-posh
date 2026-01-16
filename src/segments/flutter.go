@@ -55,7 +55,7 @@ func (f *Flutter) parseFvmrc() (string, error) {
 		return "", err
 	}
 
-	content := f.env.FileContent(fvmrcPath)
+	content := f.env.FileContent(fvmrcPath.Path)
 	if content == "" {
 		return "", nil
 	}
@@ -69,7 +69,7 @@ func (f *Flutter) parseDartToolVersion() (string, error) {
 		return "", err
 	}
 
-	content := f.env.FileContent(dartToolVersionPath)
+	content := f.env.FileContent(dartToolVersionPath.Path)
 	if content == "" {
 		return "", nil
 	}
